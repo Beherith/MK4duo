@@ -54,6 +54,26 @@
     SERIAL_EM(" prewarn flag cleared");
   }
 
+  void tmc_set_register(TMC &st, uint8_t address, uint32_t value){
+	  address = address | 128; //high bit 0 means read
+	  SERIAL_MSG("Setting address ");
+	  SERIAL_EV(address);
+	  SERIAL_MSG(" to value: ");
+	  SERIAL_EV(value);
+	  st.send2130(address, &value);
+	  SERIAL_EOL();
+  }
+  void tmc_get_register(TMC &st, uint8_t address){
+	  address = address & 127; // high bit 1 means write
+	  uint32_t value = 0;
+	  SERIAL_MSG("Getting from address ");
+	  SERIAL_EV(address);
+	  SERIAL_MSG(" value: ");
+	  st.send2130(address, &value);
+	  SERIAL_EV(value);
+	  SERIAL_EOL();
+  }
+
   void tmc_get_pwmthrs(TMC &st, const char name[], const uint16_t spmm) {
     SERIAL_TXT(name);
     SERIAL_MSG(" stealthChop max speed set to ");

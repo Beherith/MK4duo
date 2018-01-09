@@ -78,6 +78,56 @@
   }
 
   /**
+     * M916: Get/Set TMC Register
+     * M916 [XYZE](int addr) | V(int setvalue)
+     */
+
+  #define CODE_M916
+  inline void gcode_M916(void) {
+
+	#if ENABLED(X_IS_TMC2130)
+        if (parser.seen('X')){
+        	uint8_t address = parser.value_ushort();
+        	if (parser.seen('V')){
+        		uint32_t value = parser.value_ulong();
+        		tmc_set_register(stepperX, address, value);
+        	}else tmc_get_register(stepperX,address);
+        }
+	#endif
+	#if ENABLED(Y_IS_TMC2130)
+
+        if (parser.seen('Y')){
+        	uint8_t address = parser.value_ushort();
+        	if (parser.seen('V')){
+        		uint32_t value = parser.value_ulong();
+        		tmc_set_register(stepperY, address, value);
+        	}else tmc_get_register(stepperY,address);
+        }
+	#endif
+	#if ENABLED(Z_IS_TMC2130)
+
+        if (parser.seen('Z')){
+        	uint8_t address = parser.value_ushort();
+        	if (parser.seen('V')){
+        		uint32_t value = parser.value_ulong();
+        		tmc_set_register(stepperZ, address, value);
+        	}else tmc_get_register(stepperZ,address);
+        }
+	#endif
+	#if ENABLED(E0_IS_TMC2130)
+
+        if (parser.seen('E')){
+        	uint8_t address = parser.value_ushort();
+        	if (parser.seen('V')){
+        		uint32_t value = parser.value_ulong();
+        		tmc_set_register(stepperE0, address, value);
+        	}else tmc_get_register(stepperE0,address);
+        }
+	#endif
+
+  }
+
+  /**
    * M913: Set HYBRID_THRESHOLD speed.
    */
   #if ENABLED(HYBRID_THRESHOLD)

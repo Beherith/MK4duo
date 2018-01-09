@@ -167,7 +167,8 @@
     st.blank_time(24);
     st.off_time(5); // Only enables the driver if used with stealthChop
     st.interpolate(INTERPOLATE);
-    st.power_down_delay(128); // ~2s until driver lowers to hold current
+    st.power_down_delay(255); // ~2s until driver lowers to hold current
+    st.hold_delay(31);
     st.hysterisis_start(3);
     st.hysterisis_end(2);
     st.diag1_active_high(1); // For sensorless homing

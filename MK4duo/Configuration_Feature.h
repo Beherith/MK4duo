@@ -471,9 +471,9 @@
  * Cura (as of this writing) may produce Gcode incompatible with the automatic mode.     *
  *                                                                                       *
  *****************************************************************************************/
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 
-#define LIN_ADVANCE_K 75
+#define LIN_ADVANCE_K 0
 
 // The calculated ratio (or 0) according to the formula W * H / ((D / 2) ^ 2 * PI)
 // Example: 0.4 * 0.2 / ((1.75 / 2) ^ 2 * PI) = 0.033260135
@@ -1095,7 +1095,7 @@
 /*****************************************************************************************
  *************************************** SDCARD *******************************************
  ****************************************************************************************/
-//#define SDSUPPORT
+#define SDSUPPORT
 
 //#define SDSLOW              // Use slower SD transfer mode (not normally needed - uncomment if you're getting volume init error)
 //#define SDEXTRASLOW         // Use even slower SD transfer mode (not normally needed - uncomment if you're getting volume init error)
@@ -1224,7 +1224,7 @@
 // IMPORTANT NOTE: The U8glib library is required for Full Graphic Display!
 //                 https://github.com/olikraus/U8glib_Arduino
 //
-//#define ULTRA_LCD   // Character based
+#define ULTRA_LCD   // Character based
 //#define DOGLCD      // Full graphics display
 
 
@@ -1286,7 +1286,7 @@
 
 // This option reverses the encoder direction everywhere
 //  Set this option if CLOCKWISE causes values to DECREASE
-//#define REVERSE_ENCODER_DIRECTION
+#define REVERSE_ENCODER_DIRECTION
 
 // This option reverses the encoder direction for navigating LCD menus.
 //  If CLOCKWISE normally moves DOWN this makes it go UP.
@@ -1309,15 +1309,15 @@
 // SPEAKER/BUZZER
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
-//#define SPEAKER
+#define SPEAKER
 
 // The duration and frequency for the UI feedback sound.
 // Set these to 0 to disable audio feedback in the LCD menus.
 
 // Note: Test audio output with the G-Code:
 //  M300 S<frequency Hz> P<duration ms>
-//#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 2
-//#define LCD_FEEDBACK_FREQUENCY_HZ 5000
+#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 10
+#define LCD_FEEDBACK_FREQUENCY_HZ 1000
 
 //Display Voltage Logic Selector on Alligator Board
 //#define UI_VOLTAGE_LEVEL 0 // 3.3 V
@@ -1872,7 +1872,7 @@
  * See Configuration_Motor_Driver.h for configuration stepper driver              *
  *                                                                                *
  **********************************************************************************/
-//#define HAVE_TMC2130
+#define HAVE_TMC2130
 /**********************************************************************************/
 
 
@@ -1923,12 +1923,12 @@
 // THE BLOCK BUFFER SIZE NEEDS TO BE A POWER OF 2 (i.g. 8, 16, 32) because shifts
 // and ors are used to do the ring-buffering.
 // For Arduino DUE setting BLOCK BUFFER SIZE to 32
-#define BLOCK_BUFFER_SIZE 16
+#define BLOCK_BUFFER_SIZE 64
 
 // The ASCII buffer for receiving from the serial:
 #define MAX_CMD_SIZE 96
 // For Arduino DUE setting to 8
-#define BUFSIZE 4
+#define BUFSIZE 8
 
 /** START Function only for 8 bit proccesor */
 // Transmission to Host Buffer Size

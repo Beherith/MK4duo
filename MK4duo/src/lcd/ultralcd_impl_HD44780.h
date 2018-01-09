@@ -870,7 +870,26 @@ static void lcd_implementation_status_screen() {
     lcd.print(itostr3(mechanics.feedrate_percentage));
     lcd.write('%');
 
-    #if LCD_WIDTH >= 20 && HAS_SDSUPPORT
+	#if LCD_WIDTH >= 20 && ENABLED(SDSUPPORT)
+
+	  lcd.setCursor(6, 2); //we have 7 chars to work with
+
+	  if (IS_SD_PRINTING){
+		//lcd_printPGM(PSTR("SD"));
+		lcd.print(itostr2(min(99,card.percentDone())));
+		lcd_printPGM(PSTR("% B"));
+		lcd.print(itostr2(planner.movesplanned()));
+
+	  }
+	  else{
+		lcd_printPGM(PSTR("BUF:"));
+		lcd.print(itostr3(planner.movesplanned()));
+	  }
+
+	#endif // LCD_WIDTH >= 20 && SDSUPPORT
+
+
+    /*#if LCD_WIDTH >= 20 && HAS_SDSUPPORT
 
       lcd.setCursor(7, 2);
       lcd_printPGM(PSTR("SD"));
@@ -881,7 +900,7 @@ static void lcd_implementation_status_screen() {
       lcd.write('%');
 
     #endif // LCD_WIDTH >= 20 && SDSUPPORT
-
+*/
     char buffer[10];
     duration_t elapsed = print_job_counter.duration();
     uint8_t len = elapsed.toDigital(buffer);

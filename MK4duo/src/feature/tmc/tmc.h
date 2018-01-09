@@ -47,6 +47,8 @@
   void tmc_get_current(TMC &st, const char name[]);
   void tmc_set_current(TMC &st, const char name[], const int mA);
   void tmc_report_otpw(TMC &st, const char name[]);
+  void tmc_set_register(TMC &st, uint8_t address, uint32_t value);
+  void tmc_get_register(TMC &st, uint8_t address);
   void tmc_clear_otpw(TMC &st, const char name[]);
   void tmc_get_pwmthrs(TMC &st, const char name[], const uint16_t spmm);
   void tmc_set_pwmthrs(TMC &st, const char name[], const int32_t thrs, const uint32_t spmm);

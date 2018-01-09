@@ -392,12 +392,12 @@
  * Put THERMAL PROTECTION COOLER at true to enable this feature for the cooler.   *
  *                                                                                *
  **********************************************************************************/
-#define THERMAL_PROTECTION_HOTENDS false
+#define THERMAL_PROTECTION_HOTENDS true
 #define THERMAL_PROTECTION_BED false
 #define THERMAL_PROTECTION_CHAMBER false
 #define THERMAL_PROTECTION_COOLER false
 
-#define THERMAL_PROTECTION_PERIOD    40     // Seconds
+#define THERMAL_PROTECTION_PERIOD    20     // Seconds
 #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
 
 /**
@@ -408,7 +408,7 @@
  * If you get false positives for "Heating failed" increase WATCH TEMP PERIOD and/or decrease WATCH TEMP INCREASE
  * WATCH TEMP INCREASE should not be below 2.
  */
-#define WATCH_TEMP_PERIOD  20               // Seconds
+#define WATCH_TEMP_PERIOD  40               // Seconds
 #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
 /********************************************************************************/
 
